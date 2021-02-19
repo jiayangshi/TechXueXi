@@ -592,12 +592,12 @@ def keep_alive(driver_login):
     driver_alive = driver_login
     #driver_alive.set_cookies(cookies)
     driver_alive.get_url('https://pc.xuexi.cn/points/my-points.html')
-    print("每10分钟刷新一次界面，防止登录超时...")
-    sleep(600)
+    print("每5分钟刷新一次界面，防止登录超时...")
+    sleep(300)
 
 
 
-def daliy_routine():
+def daliy_routine(cookies, a_log, v_log, d_log):
     total, each = show_score(cookies)
     nohead, lock, stime = get_argv()
 
@@ -653,7 +653,7 @@ TechXueXi 现支持以下模式（答题时请值守电脑旁处理少部分不�
 
     while True:
         # do daily routine everyday on 6 am
-        if abs((datetime.now() - datetime.strptime(str(date.today())+' '+"06:00:00", '%Y-%m-%d %H:%M:%S')).seconds)<300:
-            daliy_routine()
+        if abs((datetime.now() - datetime.strptime(str(date.today())+' '+"07:15:00", '%Y-%m-%d %H:%M:%S')).seconds)<600:
+            daliy_routine(cookies, a_log, v_log, d_log)
         else:
             keep_alive(driver_login)
