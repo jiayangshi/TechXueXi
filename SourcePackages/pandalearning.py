@@ -61,7 +61,7 @@ def show_score(cookies):
     return total, each
 
 
-def article(cookies, a_log, each):
+def article(cookies, a_log, each, nohead):
     if each[0] < 6 or each[3] < 8:
         driver_article = mydriver.Mydriver(nohead=nohead)
         driver_article.get_url("https://www.xuexi.cn/notFound.html")
@@ -120,7 +120,7 @@ def article(cookies, a_log, each):
         print("文章之前学完了")
 
 
-def video(cookies, v_log, each):
+def video(cookies, v_log, each, nohead):
     if each[1] < 6 or each[4] < 10:
         driver_video = mydriver.Mydriver(nohead=nohead)
         driver_video.get_url("https://www.xuexi.cn/notFound.html")
@@ -610,8 +610,8 @@ def daliy_routine(cookies, a_log, v_log, d_log):
         print('开始专项答题……')
         zhuanxiang(cookies, d_log, each)
 
-    article_thread = threads.MyThread("文章学习", article, cookies, a_log, each, lock=lock)
-    video_thread = threads.MyThread("视频学习", video, cookies, v_log, each, lock=lock)
+    article_thread = threads.MyThread("文章学习", article, cookies, a_log, each, nohead, lock=lock)
+    video_thread = threads.MyThread("视频学习", video, cookies, v_log, each, nohead,lock=lock)
     article_thread.start()
     video_thread.start()
     article_thread.join()
