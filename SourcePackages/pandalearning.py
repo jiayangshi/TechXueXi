@@ -186,7 +186,7 @@ def check_delay():
 
 
 def daily(cookies, d_log, each):
-    if each[5] < 6:
+    if each[5] < 5:
         # driver_daily = mydriver.Mydriver(nohead=nohead)  time.sleep(random.randint(5, 15))
         driver_daily = mydriver.Mydriver(nohead=False)
         driver_daily.driver.maximize_window()
@@ -197,12 +197,12 @@ def daily(cookies, d_log, each):
         driver_daily.set_cookies(cookies)
         try_count = 0
 
-        if each[5] < 6:
-            d_num = 6 - each[5]
+        if each[5] < 5:
+            d_num = 5 - each[5]
             letters = list("ABCDEFGHIJKLMN")
             driver_daily.get_url('https://pc.xuexi.cn/points/my-points.html')
             driver_daily.click_xpath('//*[@id="app"]/div/div[2]/div/div[3]/div[2]/div[5]/div[2]/div[2]/div')
-            while each[5] < 6:
+            while each[5] < 5:
                 try:
                     category = driver_daily.xpath_getText(
                         '//*[@id="app"]/div/div[2]/div/div[4]/div[1]/div[1]')  # get_attribute("name")
@@ -295,7 +295,7 @@ def daily(cookies, d_log, each):
                 d_log += d_num
 
             total, each = show_score(cookies)
-            if each[5] >= 6:
+            if each[5] >= 5:
                 print("检测到每日答题分数已满,退出学习")
                 driver_daily.quit()
         else:
@@ -597,7 +597,7 @@ def keep_alive(driver_login):
 
 
 
-def daliy_routine(cookies, a_log, v_log, d_log):
+def daliy_routine(cookies, a_log, v_log, d_log, TechXueXi_mode):
     total, each = show_score(cookies)
     nohead, lock, stime = get_argv()
 
@@ -642,7 +642,7 @@ TechXueXi 现支持以下模式（答题时请值守电脑旁处理少部分不�
 ''',"=" * 120)
     # TechXueXi_mode = input("请选择模式（输入对应数字）并回车： ")
     # always 2 to get possible most scores
-    TechXueXi_mode = 2
+    TechXueXi_mode = "2"
 
     info_shread = threads.MyThread("获取更新信息...", version.up_info)
     info_shread.start()
@@ -653,7 +653,7 @@ TechXueXi 现支持以下模式（答题时请值守电脑旁处理少部分不�
 
     while True:
         # do daily routine everyday on 6 am
-        if abs((datetime.now() - datetime.strptime(str(date.today())+' '+"07:15:00", '%Y-%m-%d %H:%M:%S')).seconds)<600:
-            daliy_routine(cookies, a_log, v_log, d_log)
+        if abs((datetime.now() - datetime.strptime(str(date.today())+' '+"00:05:00", '%Y-%m-%d %H:%M:%S')).seconds)<600:
+            daliy_routine(cookies, a_log, v_log, d_log, TechXueXi_mode)
         else:
             keep_alive(driver_login)
