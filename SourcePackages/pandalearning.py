@@ -56,7 +56,7 @@ def get_argv():
 def show_score(cookies):
     total, each = score.get_score(cookies)
     print("当前学习总积分：" + str(total))
-    print("阅读文章:{}/6,观看视频:{}/6,登陆:{}/1,文章时长:{}/6,视频时长:{}/6,每日答题:{}/6,每周答题:{}/5,专项答题:{}/10".format(*each))
+    print("阅读文章:{}/6,观看视频:{}/6,登陆:{}/1,文章时长:{}/6,视频时长:{}/6,每日答题:{}/5,每周答题:{}/5,专项答题:{}/10".format(*each))
     # print("阅读文章:",each[0],"/6,观看视频:",each[1],"/6,登陆:",each[2],"/1,文章时长:",each[3],"/6,视频时长:",each[4],"/6,每日答题:",each[5],"/6,每周答题:",each[6],"/5,专项答题:",each[7],"/10")
     return total, each
 
@@ -213,6 +213,10 @@ def daily(cookies, d_log, each):
                 tips = driver_daily._view_tips()
                 check_delay()
                 if not tips:
+                    print("题目不含提示无法解决,暂时跳过")
+                    driver_daily.quit()
+                    break
+
                     print("本题没有提示")
                     if "填空题" in category:
                         print('没有找到提示，暂时略过')
@@ -617,7 +621,7 @@ def daliy_routine(cookies, a_log, v_log, d_log, TechXueXi_mode):
     article_thread.join()
     video_thread.join()
     print("总计用时" + str(int(time.time() - start_time) / 60) + "分钟")
-    user.shutdown(stime)
+    #user.shutdown(stime)
 
 
 if __name__ == '__main__':
@@ -655,5 +659,7 @@ TechXueXi 现支持以下模式（答题时请值守电脑旁处理少部分不�
         # do daily routine everyday on 6 am
         if abs((datetime.now() - datetime.strptime(str(date.today())+' '+"00:05:00", '%Y-%m-%d %H:%M:%S')).seconds)<600:
             daliy_routine(cookies, a_log, v_log, d_log, TechXueXi_mode)
+        elif abs((datetime.now() - datetime.strptime(str(date.today()) + ' ' + "06:05:00",'%Y-%m-%d %H:%M:%S')).seconds)<600:
+                daliy_routine(cookies, a_log, v_log, d_log, TechXueXi_mode)
         else:
             keep_alive(driver_login)
