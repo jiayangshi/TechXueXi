@@ -330,6 +330,7 @@ def weekly(cookies, d_log, each):
             d_num = 6 - each[5]
             letters = list("ABCDEFGHIJKLMN")
             driver_weekly.get_url('https://pc.xuexi.cn/points/my-points.html')
+            time.sleep(2)
             driver_weekly.click_xpath('//*[@id="app"]/div/div[2]/div/div[3]/div[2]/div[6]/div[2]/div[2]/div')
             time.sleep(2)
             flag = 1
