@@ -664,3 +664,5 @@ TechXueXi 现支持以下模式（答题时请值守电脑旁处理少部分不�
                 daliy_routine(cookies, a_log, v_log, d_log, TechXueXi_mode)
         else:
             keep_alive(driver_login)
+
+
