@@ -655,12 +655,13 @@ TechXueXi 现支持以下模式（答题时请值守电脑旁处理少部分不�
     dd_status, uname = user.get_user()
     cookies, a_log, v_log, d_log, driver_login = user_flag(dd_status, uname)
     # login finished here
+    cur_time = datetime.now()
 
     while True:
         # do daily routine everyday on 6 am
-        if abs((datetime.now() - datetime.strptime(str(date.today())+' '+"00:05:00", '%Y-%m-%d %H:%M:%S')).seconds)<600:
+        if abs((datetime.now() - cur_time).seconds)<600:
             daliy_routine(cookies, a_log, v_log, d_log, TechXueXi_mode)
-        elif abs((datetime.now() - datetime.strptime(str(date.today()) + ' ' + "06:05:00",'%Y-%m-%d %H:%M:%S')).seconds)<600:
+        elif abs((datetime.now() - datetime.strptime(str(date.today()) + ' ' + "19:30:00",'%Y-%m-%d %H:%M:%S')).seconds)<600:
                 daliy_routine(cookies, a_log, v_log, d_log, TechXueXi_mode)
         else:
             keep_alive(driver_login)
