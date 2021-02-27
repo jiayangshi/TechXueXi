@@ -661,7 +661,12 @@ TechXueXi 现支持以下模式（答题时请值守电脑旁处理少部分不�
         # do daily routine everyday on 6 am
         if abs((datetime.now() - cur_time).seconds)<600:
             daliy_routine(cookies, a_log, v_log, d_log, TechXueXi_mode)
-        elif abs((datetime.now() - datetime.strptime(str(date.today()) + ' ' + "19:30:00",'%Y-%m-%d %H:%M:%S')).seconds)<600:
+        elif abs((datetime.now() - datetime.strptime(str(date.today()) + ' ' + "17:05:00",'%Y-%m-%d %H:%M:%S')).seconds)<600:
+                # update cookies
+                cookies = driver_login.get_cookies()
+                a_log = user.get_a_log(uname)
+                v_log = user.get_v_log(uname)
+                d_log = user.get_d_log(uname)
                 daliy_routine(cookies, a_log, v_log, d_log, TechXueXi_mode)
         else:
             keep_alive(driver_login)
