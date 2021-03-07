@@ -15,21 +15,21 @@ def get_user():
         dd = False
     return dd, uname
 
-
+# 检查用户文件夹
 def check_uname(uname):
     __check_status = False
     if os.path.exists("./user/{}".format(uname)):
         __check_status = True
     return __check_status
 
-
+# 检查钉钉登陆
 def check_dd(uname):
     __dd_status = False
     if os.path.exists("./user/{}/dingding".format(uname)):
         __dd_status = True
     return __dd_status
 
-
+# 文章学习计数
 def get_a_log(uname):
     __a_log = 0
     if os.path.exists("./user/{}/a_log".format(uname)):
@@ -40,7 +40,7 @@ def get_a_log(uname):
             fp.write(str(__a_log))
     return __a_log
 
-
+#视频观看计数
 def get_v_log(uname):
     __v_log = 0
     if os.path.exists("./user/{}/v_log".format(uname)):
@@ -51,7 +51,7 @@ def get_v_log(uname):
             fp.write(str(__v_log))
     return __v_log
 
-
+# 每日每周专项答题计数
 def get_d_log(uname):
     __d_log = 0
     if os.path.exists("./user/{}/d_log".format(uname)):
