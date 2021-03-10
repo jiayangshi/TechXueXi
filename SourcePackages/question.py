@@ -2,18 +2,20 @@ import time
 from pdlearn import mydriver
 from utils import show_score
 from utils import check_delay
+from datetime import datetime
 
 # todo: handle case fails to answer
 # todo: possibility1 calculate the running time
 # todo: possibility2 update the questions logics
 def daily(cookies, d_log, each, uname):
+    begin_time = datetime.now()
     if each[5] < 5:
         # driver_daily = mydriver.Mydriver(nohead=nohead)  time.sleep(random.randint(5, 15))
         driver_daily = mydriver.Mydriver(nohead=False)
-        driver_daily.driver.maximize_window()
-        print('请保持窗口最大化')
-        print('请保持窗口最大化')
-        print('请保持窗口最大化')
+        # driver_daily.driver.maximize_window()
+        # print('请保持窗口最大化')
+        # print('请保持窗口最大化')
+        # print('请保持窗口最大化')
         driver_daily.get_url("https://www.xuexi.cn/notFound.html")
         driver_daily.set_cookies(cookies)
         try_count = 0
@@ -24,6 +26,9 @@ def daily(cookies, d_log, each, uname):
             driver_daily.get_url('https://pc.xuexi.cn/points/my-points.html')
             driver_daily.click_xpath('//*[@id="app"]/div/div[2]/div/div[3]/div[2]/div[5]/div[2]/div[2]/div')
             while each[5] < 5:
+                if (datetime.now() - begin_time).seconds>(15*60):
+                    print("包含不支持的题目，暂时跳过")
+                    break
                 try:
                     category = driver_daily.xpath_getText(
                         '//*[@id="app"]/div/div[2]/div/div[4]/div[1]/div[1]')  # get_attribute("name")
@@ -132,13 +137,14 @@ def daily(cookies, d_log, each, uname):
 
 
 def weekly(cookies, d_log, each, uname):
+    begin_time = datetime.now()
     if each[6] < 5:
         # driver_weekly = mydriver.Mydriver(nohead=nohead)  time.sleep(random.randint(5, 15))
         driver_weekly = mydriver.Mydriver(nohead=False)
-        driver_weekly.driver.maximize_window()
-        print('请保持窗口最大化')
-        print('请保持窗口最大化')
-        print('请保持窗口最大化')
+        # driver_weekly.driver.maximize_window()
+        # print('请保持窗口最大化')
+        # print('请保持窗口最大化')
+        # print('请保持窗口最大化')
         driver_weekly.get_url("https://www.xuexi.cn/notFound.html")
         driver_weekly.set_cookies(cookies)
         try_count = 0
@@ -165,7 +171,10 @@ def weekly(cookies, d_log, each, uname):
                             '//*[@id="app"]/div/div[2]/div/div[4]/div/div[' + str(tem + 1) + ']/div[2]/div[' + str(
                                 tem2 + 1) + ']/button')
                         flag = 0
-            while each[6] < 5 and try_count < 10:
+            while each[6] < 5:# and try_count < 10:
+                if (datetime.now() - begin_time).seconds>(15*60):
+                    print("包含不支持的题目，暂时跳过")
+                    break
                 try:
                     category = driver_weekly.xpath_getText(
                         '//*[@id="app"]/div/div[2]/div/div[4]/div[1]/div[1]')  # get_attribute("name")
@@ -274,16 +283,17 @@ def weekly(cookies, d_log, each, uname):
 
 
 def zhuanxiang(cookies, d_log, each, uname):
+    begin_time = datetime.now()
     if each[7] < 10:
         # driver_zhuanxiang = mydriver.Mydriver(nohead=nohead)  time.sleep(random.randint(5, 15))
         driver_zhuanxiang = mydriver.Mydriver(nohead=False)
-        driver_zhuanxiang.driver.maximize_window()
-        print('请保持窗口最大化')
-        print('请保持窗口最大化')
-        print('请保持窗口最大化')
+        # driver_zhuanxiang.driver.maximize_window()
+        # print('请保持窗口最大化')
+        # print('请保持窗口最大化')
+        # print('请保持窗口最大化')
         driver_zhuanxiang.get_url("https://www.xuexi.cn/notFound.html")
         driver_zhuanxiang.set_cookies(cookies)
-        try_count = 0
+        #try_count = 0
 
         if each[7] < 10:
             d_num = 10 - each[5]
@@ -303,6 +313,9 @@ def zhuanxiang(cookies, d_log, each, uname):
                         '//*[@id="app"]/div/div[2]/div/div[4]/div/div/div/div[' + str(tem + 1) + ']/div[2]/button')
                     break
             while each[7] < 10:
+                if (datetime.now() - begin_time).seconds>(15*60):
+                    print("包含不支持的题目，暂时跳过")
+                    break
                 try:
                     category = driver_zhuanxiang.xpath_getText(
                         '//*[@id="app"]/div/div[2]/div/div[6]/div[1]/div[1]')  # get_attribute("name")

@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca226c82-ea72-4037-992b-63a97652a40b" name="Default Changelist" comment="struct">
-      <change beforePath="$PROJECT_DIR$/.idea/TechXueXi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TechXueXi.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SourcePackages/articlevideos.py" beforeDir="false" afterPath="$PROJECT_DIR$/SourcePackages/articlevideos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SourcePackages/daliyroutine.py" beforeDir="false" afterPath="$PROJECT_DIR$/SourcePackages/daliyroutine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SourcePackages/pandalearning.py" beforeDir="false" afterPath="$PROJECT_DIR$/SourcePackages/pandalearning.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SourcePackages/question.py" beforeDir="false" afterPath="$PROJECT_DIR$/SourcePackages/question.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SourcePackages/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/SourcePackages/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +71,7 @@
       <workItem from="1615408034331" duration="58000" />
       <workItem from="1615408094510" duration="55000" />
       <workItem from="1615408217000" duration="321000" />
+      <workItem from="1615408594982" duration="848000" />
     </task>
     <task id="LOCAL-00001" summary="struct">
       <created>1615382518394</created>
