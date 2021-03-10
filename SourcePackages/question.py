@@ -1,7 +1,7 @@
 import time
-from SourcePackages.pdlearn import mydriver
-from SourcePackages.continouspd.utils import show_score
-from SourcePackages.continouspd.utils import check_delay
+from pdlearn import mydriver
+from utils import show_score
+from utils import check_delay
 
 # todo: handle case fails to answer
 # todo: possibility1 calculate the running time

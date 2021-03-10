@@ -1,13 +1,11 @@
-import time
-
 from pdlearn import version
 from pdlearn import user
 from pdlearn import threads
 from datetime import datetime
 from datetime import date
 
-from continouspd.utils import user_flag, keep_alive
-from continouspd.daliyroutine import daliy_routine
+from utils import user_flag, keep_alive
+from daliyroutine import daliy_routine
 
 
 if __name__ == '__main__':

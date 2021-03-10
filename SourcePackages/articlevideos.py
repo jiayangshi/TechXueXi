@@ -1,8 +1,8 @@
 import random
 import time
-from SourcePackages.pdlearn import mydriver
-from SourcePackages.pdlearn import get_links
-from SourcePackages.continouspd.utils import show_score
+from pdlearn import mydriver
+from pdlearn import get_links
+from utils import show_score
 
 def article(cookies, a_log, each, uname, nohead):
     if each[0] < 6 or each[3] < 8:

@@ -1,8 +1,8 @@
 import time
-from SourcePackages.continouspd.utils import show_score, get_argv
-from SourcePackages.continouspd.question import daily, weekly, zhuanxiang
-from SourcePackages.continouspd.articlevideos import article, video
-from SourcePackages.pdlearn import threads
+from utils import show_score, get_argv
+from question import daily, weekly, zhuanxiang
+from articlevideos import article, video
+from pdlearn import threads
 
 
 def daliy_routine(cookies, a_log, v_log, d_log, TechXueXi_mode, uname):

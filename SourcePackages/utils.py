@@ -2,9 +2,9 @@ import random
 import time
 from time import sleep
 from sys import argv
-from SourcePackages.pdlearn import user
-from SourcePackages.pdlearn import mydriver
-from SourcePackages.pdlearn import score
+from pdlearn import user
+from pdlearn import mydriver
+from pdlearn import score
 
 def user_flag(uname):
     driver_login = mydriver.Mydriver(nohead=False)
