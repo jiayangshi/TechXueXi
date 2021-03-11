@@ -1,0 +1,7 @@
+./SourcePackages/pdlearn/__pycache__/*
+./user/*
+./SourcePackages/.idea/*
+./.idea/*
+./user/*
+./SourcePackages/__pycache__/*
+
