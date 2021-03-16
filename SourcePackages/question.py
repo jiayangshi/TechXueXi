@@ -211,7 +211,7 @@ def weekly(cookies, d_log, each, uname):
                         radio_in_tips, radio_out_tips = "", ""
                         for letter, option in zip(letters, options):
                             for tip in tips:
-                                if tip in option:
+                                if tip in option and tip!="\"":
                                     # print(f'{option} in tips')
                                     if letter not in radio_in_tips:
                                         radio_in_tips += letter

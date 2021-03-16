@@ -19,8 +19,8 @@ def daliy_routine(cookies, a_log, v_log, d_log, TechXueXi_mode, uname):
         print('开始专项答题……')
         zhuanxiang(cookies, d_log, each, uname)
 
-    article_thread = threads.MyThread("文章学习", article, cookies, a_log, each, nohead, uname, lock=lock)
-    video_thread = threads.MyThread("视频学习", video, cookies, v_log, each, nohead, uname, lock=lock)
+    article_thread = threads.MyThread("文章学习", article, cookies, a_log, each, uname, nohead, lock=lock)
+    video_thread = threads.MyThread("视频学习", video, cookies, v_log, each, uname, nohead, lock=lock)
     article_thread.start()
     video_thread.start()
     article_thread.join()
