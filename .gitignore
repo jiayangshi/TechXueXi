@@ -2,6 +2,6 @@
 ./user/*
 ./SourcePackages/.idea/*
 ./.idea/*
-./user/*
+./SourcePackages/user/*
 ./SourcePackages/__pycache__/*
 
