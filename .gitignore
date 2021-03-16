@@ -5,3 +5,9 @@
 ./SourcePackages/user/*
 ./SourcePackages/__pycache__/*
 
+
+.vscode
+SourcePackages/XuexiStart.sh
+pandaico.ico
+contributors.psd
+SourcePackages/chrome
