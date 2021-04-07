@@ -142,23 +142,7 @@ TechXueXi为python学习交流的开源非营利项目，仅作为程序员之�
 ## 💾下载地址
 **非windows系统请暂时使用源码或虚拟机运行，各位若编译了二进制文件，可以邮件我们（推荐）或提交PR，谢谢————20200428**
 
-### mac源码使用说明
-    1. 安装chromdiriver
-    
-    `brew install chromedriver `
-    
-    2. 安装所需 python 模块
 
-```bash
-    pip install lxml
-    pip install requests
-    pip install bs4
-    pip install selenium
-```
-    3. 执行文件
-    `cd SourcePackages  && python3 ./pandalearning.py`
-    
-    
 <!--
 [windows高速下载](https://github.com/TechXueXi/TechXueXi/releases)
 
@@ -241,6 +225,47 @@ win平台可能提示`无法定位程序输入点ucrtbase.terminate于动态链�
 ## 📝源码
 
 [![](https://img.shields.io/badge/source-pandalearning-orange.svg?style=for-the-badge&logo=visualstudiocode)](https://github.com/TechXueXi/TechXueXi/tree/master/SourcePackages) 
+
+简易说明，具体请谷歌必应百度
+
+安装 python 3
+
+### win源码使用说明
+
+1. 下载 chromdiriver，chrome 并配置好
+
+2. 安装所需 python 模块
+
+```
+pip install -r requirements.txt
+```
+
+3. 执行文件
+
+```
+python ./pandalearning.py
+```
+
+
+### mac源码使用说明
+
+1. 安装chromdiriver
+
+```
+brew install chromedriver
+```
+
+2. 安装所需 python 模块
+
+```
+pip install -r requirements.txt
+```
+
+3. 执行文件
+
+```
+python3 ./pandalearning.py
+```
 
 
 
