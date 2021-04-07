@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common import exceptions
 from selenium.webdriver.chrome.options import Options
 from pdlearn import user_agent
+from pdlearn import user
 from bs4 import BeautifulSoup
 import lxml
 import os
@@ -55,6 +56,10 @@ class Mydriver:
 
             self.options.add_argument('--user-agent={}'.format(user_agent.getheaders()))
             self.options.add_experimental_option('excludeSwitches', ['enable-automation'])  # 绕过js检测
+            # 在chrome79版本之后，上面的实验选项已经不能屏蔽webdriver特征了
+            # 屏蔽webdriver特征
+            self.options.add_argument("--disable-blink-features")
+            self.options.add_argument("--disable-blink-features=AutomationControlled")
             self.webdriver = webdriver
             if os.path.exists("./chrome/chromedriver.exe"):  # win
                 self.driver = self.webdriver.Chrome(executable_path="./chrome/chromedriver.exe",
@@ -71,12 +76,12 @@ class Mydriver:
             else:
                 self.driver = self.webdriver.Chrome(chrome_options=self.options)
         except:
-            print("=" * 120)
+            print("=" * 60)
             print("Mydriver初始化失败")
-            print("=" * 120)
+            print("=" * 60)
             raise
 
-    def login(self):
+    def get_cookie_from_network(self):
         print("正在打开二维码登陆界面,请稍后")
         self.driver.get("https://pc.xuexi.cn/points/login.html")
         try:
@@ -105,32 +110,19 @@ class Mydriver:
             # WebDriverWait(self.driver, 270).until(EC.title_is(u"我的学习"))
             WebDriverWait(self.driver, 270).until(title_of_login())
             cookies = self.get_cookies()
+            
+            user.save_cookies(cookies)
+            
             return cookies
-        except:
-            print("扫描二维码超时")
+        except Exception as e:
+            self.quit()
+            input("扫描二维码超时... 按回车键退出程序. 错误信息：" + str(e))
+            exit()
 
-    def dd_login(self, d_name, pwd):
-        __login_status = False
-        self.driver.get(
-            "https://login.dingtalk.com/login/index.htm?"
-            "goto=https%3A%2F%2Foapi.dingtalk.com%2Fconnect%2Foauth2%2Fsns_authorize"
-            "%3Fappid%3Ddingoankubyrfkttorhpou%26response_type%3Dcode%26scope%3Dsnsapi"
-            "_login%26redirect_uri%3Dhttps%3A%2F%2Fpc-api.xuexi.cn%2Fopen%2Fapi%2Fsns%2Fcallback"
-        )
-        self.driver.find_elements_by_id("mobilePlaceholder")[0].click()
-        self.driver.find_element_by_id("mobile").send_keys(d_name)
-        self.driver.find_elements_by_id("mobilePlaceholder")[1].click()
-        self.driver.find_element_by_id("pwd").send_keys(pwd)
-        self.driver.find_element_by_id("loginBtn").click()
-        try:
-            print("登陆中...")
-            WebDriverWait(self.driver, 2, 0.1).until(lambda driver: driver.find_element_by_class_name("modal"))
-            print(self.driver.find_element_by_class_name("modal").find_elements_by_tag_name("div")[0].text)
-            self.driver.quit()
-            __login_status = False
-        except:
-            __login_status = True
-        return __login_status
+    def login(self):
+        # 调用前要先尝试从cookie加载，失败再login
+        cookie_list = self.get_cookie_from_network()
+        return cookie_list
 
     def get_cookies(self):
         cookies = self.driver.get_cookies()
@@ -165,7 +157,7 @@ class Mydriver:
         return self.driver.find_element_by_xpath(xpath).text
 
     def check_delay(self):
-        delay_time = random.randint(2, 15)
+        delay_time = random.randint(2, 8)
         print('等待 ', delay_time, ' 秒')
         time.sleep(delay_time)
 
@@ -240,7 +232,8 @@ class Mydriver:
             except Exception as e:
                 print("点击", check_option, '失败！')
         self.check_delay()
-        submit = WebDriverWait(self.driver, 15).until(lambda driver: driver.find_element_by_class_name("action-row").find_elements_by_xpath("button"))
+        submit = WebDriverWait(self.driver, 15).until(
+            lambda driver: driver.find_element_by_class_name("action-row").find_elements_by_xpath("button"))
         if len(submit) > 1:
             self.click_xpath('//*[@id="app"]/div/div[2]/div/div[6]/div[2]/button[2]')
             print("成功点击交卷！")
