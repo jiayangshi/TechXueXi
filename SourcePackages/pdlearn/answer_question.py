@@ -39,6 +39,7 @@ def daily(cookies, scores):
                 check_delay()
                 if not tips:
                     print("本题没有提示")
+                    break
                     if "填空题" in category:
                         print('没有找到提示，暂时略过')
                         continue
@@ -222,6 +223,7 @@ def weekly(cookies, scores):
                 check_delay()
                 if not tips:
                     print("本题没有提示")
+                    break
                     if "填空题" in category:
                         print('没有找到提示，暂时略过')
                         continue
@@ -364,6 +366,7 @@ def zhuanxiang(cookies, scores):
                 check_delay()
                 if not tips:
                     print("本题没有提示")
+                    break
                     if "填空题" in category:
                         print('没有找到提示，暂时略过')
                         continue
