@@ -1,5 +1,6 @@
 from typing import List, Any
-from PIL import Image
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -108,8 +109,9 @@ class Mydriver:
             self.driver.execute_script('window.scrollTo(document.body.scrollWidth/2 - 200 , 0)')
         try:
             self.driver.save_screenshot('login_qr.png')
-            img = Image.open("login_qr.png")
-            img.show()
+            img = mpimg.imread("login_qr.png")
+            imgplot = plt.imshow(img)
+            plt.show()
             # WebDriverWait(self.driver, 270).until(EC.title_is(u"我的学习"))
             WebDriverWait(self.driver, 270).until(title_of_login())
             cookies = self.get_cookies()
