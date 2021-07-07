@@ -1,4 +1,5 @@
 from typing import List, Any
+import socket
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 from selenium import webdriver
@@ -108,7 +109,9 @@ class Mydriver:
             self.driver.execute_script('arguments[0].remove()', remover)
             self.driver.execute_script('window.scrollTo(document.body.scrollWidth/2 - 200 , 0)')
         try:
-            self.driver.save_screenshot('/home/jiayang/Share/login_qr.png')
+            HOSTNAME = socket.gethostname()
+            if "pi" in HOSTNAME.lower():
+                self.driver.save_screenshot('/home/jiayang/Share/login_qr.png')
             # WebDriverWait(self.driver, 270).until(EC.title_is(u"我的学习"))
             WebDriverWait(self.driver, 270).until(title_of_login())
             cookies = self.get_cookies()

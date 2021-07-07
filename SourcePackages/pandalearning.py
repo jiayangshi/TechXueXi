@@ -60,7 +60,7 @@ if __name__ == '__main__':
 
     while True:
         # execute once immediately
-        if abs((datetime.now() - cur_time).seconds)<0:
+        if abs((datetime.now() - cur_time).seconds)<500:
             daliy_routine(cookies, scores, TechXueXi_mode, uid, article_index, video_index)
         elif abs((datetime.now() - datetime.strptime(str(date.today()) + ' ' + "18:05:00",'%Y-%m-%d %H:%M:%S')).seconds)<600:
                 # update cookies
